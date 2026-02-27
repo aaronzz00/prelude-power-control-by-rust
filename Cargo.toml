@@ -1,0 +1,12 @@
+[package]
+name = "prelude_power_controller"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serialport = "4.3"
+thiserror = "1.0"
+
+[dependencies.libftd2xx]
+version = "0.33"
+features = ["static"]
