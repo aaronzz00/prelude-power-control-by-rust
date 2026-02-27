@@ -71,7 +71,7 @@ fn test_shutdown(
     }
 
     // 3. 发送 shutdown 命令
-    println!("\n🔴 Step 3: Sending '[shutdown,]' command...");
+    println!("\n🔴 Step 3: Sending '[2700_shutdown,]' command...");
     let shutdown_result = send_shutdown_command(port);
 
     match shutdown_result {
@@ -251,7 +251,7 @@ fn send_shutdown_command(port: &str) -> Result<String, String> {
     while comm.read(&mut discard).is_ok() {}
 
     // 发送命令
-    comm.write_all(b"[shutdown,]")
+    comm.write_all(b"[2700_shutdown,]")
         .map_err(|e| format!("Failed to write: {}", e))?;
     comm.flush()
         .map_err(|e| format!("Failed to flush: {}", e))?;

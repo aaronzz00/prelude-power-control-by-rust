@@ -162,7 +162,7 @@ println!("Device info: {}", text);
 
 ---
 
-##### `[shutdown,]` - 设备关机
+##### `[2700_shutdown,]` - 设备关机
 
 **测试结果**: ⚠️ 需要特殊处理
 
@@ -176,7 +176,7 @@ println!("Device info: {}", text);
 ```rust
 // Step 1: 发送软件关机命令
 let mut comm = serialport::new("COM3", 9600).open()?;
-comm.write_all(b"[shutdown,]")?;
+comm.write_all(b"[2700_shutdown,]")?;
 comm.flush()?;
 drop(comm); // 关闭串口
 
@@ -191,9 +191,9 @@ std::thread::sleep(Duration::from_secs(2));
 ```
 
 **注意事项**:
-- ⚠️ 如果只发送 `[shutdown,]` 而不关闭5V电源，设备会被5V重新激活
+- ⚠️ 如果只发送 `[2700_shutdown,]` 而不关闭5V电源，设备会被5V重新激活
 - ⚠️ 关闭5V后再次开启，设备会自动重启
-- ✅ 推荐使用：直接调用 `power_off()` 而不使用 `[shutdown,]`
+- ✅ 推荐使用：直接调用 `power_off()` 而不使用 `[2700_shutdown,]`
 
 ---
 
@@ -345,7 +345,7 @@ console.log('Serial Number:', info.data.serial_number);
 **不推荐** ⚠️:
 ```rust
 // 只发送shutdown命令，设备会被5V重新激活
-send_command("COM3", "[shutdown,]");
+send_command("COM3", "[2700_shutdown,]");
 // ❌ 设备仍然运行
 ```
 
@@ -359,7 +359,7 @@ controller.power_off(DeviceSide::Device1)?;
 **如果必须使用shutdown命令** ⚠️:
 ```rust
 // 1. 发送shutdown
-send_command("COM3", "[shutdown,]");
+send_command("COM3", "[2700_shutdown,]");
 std::thread::sleep(Duration::from_secs(1));
 
 // 2. 必须关闭5V电源

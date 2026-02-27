@@ -344,7 +344,7 @@ pub fn send_shutdown_command(device: String) -> ApiResponse<String> {
         }
     };
 
-    match send_command(port, "[shutdown,]") {
+    match send_command(port, "[2700_shutdown,]") {
         Ok(_) => ApiResponse {
             success: true,
             data: Some(format!("Shutdown command sent to {}", device)),

@@ -113,7 +113,7 @@ fn test_shutdown_command(controller: &mut PowerController) {
     controller.power_on(DeviceSide::Device1).unwrap();
     std::thread::sleep(Duration::from_secs(3));
 
-    if send_command("COM3", "[shutdown,]") {
+    if send_command("COM3", "[2700_shutdown,]") {
         println!("  ✅ Shutdown command sent to DUT1");
     }
 
@@ -124,7 +124,7 @@ fn test_shutdown_command(controller: &mut PowerController) {
     controller.power_on(DeviceSide::Device2).unwrap();
     std::thread::sleep(Duration::from_secs(3));
 
-    if send_command("COM4", "[shutdown,]") {
+    if send_command("COM4", "[2700_shutdown,]") {
         println!("  ✅ Shutdown command sent to DUT2");
     }
 

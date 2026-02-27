@@ -110,8 +110,8 @@ fn test_shutdown(controller: &mut PowerController, side: DeviceSide, port: &str,
     while comm.read(&mut discard).is_ok() {}
 
     // 4. 发送 shutdown 命令
-    println!("\n🔴 Step 4: Sending '[shutdown,]' command...");
-    let shutdown_cmd = b"[shutdown,]";
+    println!("\n🔴 Step 4: Sending '[2700_shutdown,]' command...");
+    let shutdown_cmd = b"[2700_shutdown,]";
 
     if let Err(e) = comm.write_all(shutdown_cmd) {
         eprintln!("  ❌ Write failed: {}", e);

@@ -24,7 +24,7 @@
 - ✅ DUT1 通信 (COM3, 9600 baud)
 - ✅ DUT2 通信 (COM4, 9600 baud)
 - ✅ `[init_status,]` 命令（获取设备信息）
-- ⚠️ `[shutdown,]` 命令（需配合power_off使用）
+- ⚠️ `[2700_shutdown,]` 命令（需配合power_off使用）
 
 **状态**: 完全工作
 
@@ -137,7 +137,7 @@ cat TAURI_INTEGRATION.md
 
 ### 1. Shutdown命令限制 ⚠️
 
-**问题**: `[shutdown,]` 命令在5V供电下无法完全关机
+**问题**: `[2700_shutdown,]` 命令在5V供电下无法完全关机
 
 **原因**: 5V供电会重新激活设备
 
@@ -164,7 +164,7 @@ controller.power_off(DeviceSide::Device1)?; // 必须
 - ✅ `[init_status,]` - 完美工作
 
 **部分验证**:
-- ⚠️ `[shutdown,]` - 需配合power_off
+- ⚠️ `[2700_shutdown,]` - 需配合power_off
 
 **未验证**:
 - ❓ 其他可能的命令需要探索
